@@ -1,25 +1,34 @@
-import React from 'react'
-const getGifs = async (category) => {
-  const curl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${'valorant'}&limit=4`
-  const resp = await fetch (curl) 
-  const {data} = await resp.json()
-  console.log(data)
+import React, { useEffect, useState } from 'react'
+import getGifs from '../utils/getGifs'
+import { GifItem } from './GifItem'
+import { useFetchGifs } from './hooks/useFetchGifs'
 
-  const gifs = data.map(img => ({
-    id: img.id,
-    title: img.title,
-    url: img.images.downsized_medium.url,
-  }))
 
-  return gifs
-}
 export const GifGrid = ({category}) => {
-  const apiKey = import.meta.env.VITE_GIF_API_KEY
 
-  getGifs(category)
+  const {images, isLoading} = useFetchGifs(category)
+
+ 
   return( 
     <>
-        <h3 className=' text-xl font-semibold m-1 p-1' >{category}</h3>
+        <h2 className=' text-2xl sm:text-5xl font-bold mb-5 p-2' >{category}</h2>
+        <div className="grid auto-rows grid-cols-3 gap-4 mb-5">
+        {
+          images.map((image, i) => (
+            <GifItem
+              key={image.id}
+              i = {i}
+              //mejoor manera 
+              {...image}
+              /*
+              una manera de hacerlo 
+              image={image.url}
+              title={image.title} */
+            />
+          ))
+        }
+        </div>
+        
     </>
   )
 }

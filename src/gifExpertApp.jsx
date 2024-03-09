@@ -17,15 +17,9 @@ export const GifExpertApp = () => {
     
     return( 
     <>
-        <h1 className=" sm:w-auto text-4xl sm:text-5xl font-bold text-center p-2 mb-5 text-gray-800" >GifExpertApp</h1>
-
-        {/*Listar categrias*/}
-        
-        
-        
+        <h1 className=" sm:w-auto text-4xl sm:text-7xl font-bold text-center p-2 mb-5 text-gray-800" >GifExpertApp</h1>
 
         <AddCategory 
-            //onSetCategorys = {setCategorys}
             onNewCategory = {event => onSearch(event)}
         />
        {
