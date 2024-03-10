@@ -1,12 +1,8 @@
 import { useState } from 'react'
 import './index.css'
-import './components/AddCategory'
-import { useRef } from 'react'
-import { AddCategory } from './components/AddCategory'
-import { GifGrid } from './components/GifGrid'
+import { AddCategory, GifGrid } from './components'
 export const GifExpertApp = () => {
-    //const apiKey = process.env.GifExpertApp
-    const [categorys, setCategorys] = useState(['star vs evil forces'])
+    const [categorys, setCategorys] = useState(['star butterfly'])
     //const searchRef = useRef(null)
     
     const onSearch = (newCategory) => {

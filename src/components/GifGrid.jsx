@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import getGifs from '../utils/getGifs'
 import { GifItem } from './GifItem'
 import { useFetchGifs } from './hooks/useFetchGifs'
 
@@ -12,6 +10,9 @@ export const GifGrid = ({category}) => {
   return( 
     <>
         <h2 className=' text-2xl sm:text-5xl font-bold mb-5 p-2' >{category}</h2>
+        {
+          isLoading && <h2 className=' text-2xl sm:text-5xl font-bold mb-5 p-2' >cargando ...</h2>
+        }
         <div className="grid auto-rows grid-cols-3 gap-4 mb-5">
         {
           images.map((image, i) => (
